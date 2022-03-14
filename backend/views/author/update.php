@@ -1,9 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-
+use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Author */
+/* @var $dataProvider \yii\data\ActiveDataProvider*/
+
 
 $this->title = 'Update Author: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Authors', 'url' => ['index']];
@@ -17,5 +19,10 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+    <div class='books'>
+        <?= ListView::widget([
+            'dataProvider' => $dataProvider,
+        ]);
+        ?>
+    </div>
 </div>

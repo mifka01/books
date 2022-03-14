@@ -4,6 +4,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Book */
+/* @var $authorDataProvider \yii\data\ActiveDataProvider */
+/* @var $illustratorDataProvider \yii\data\ActiveDataProvider */
+/* @var $publisherDataProvider \yii\data\ActiveDataProvider */
+
 
 $this->title = 'Create Book';
 $this->params['breadcrumbs'][] = ['label' => 'Books', 'url' => ['index']];

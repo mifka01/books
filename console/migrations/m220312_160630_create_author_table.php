@@ -19,7 +19,7 @@ class m220312_160630_create_author_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(255),
             'surname' => $this->string(255),
-            'nationality' => $this->string(50),
+            'nationality' => $this->string(2),
             'birthdate' => $this->date(),
             'added_by' => $this->integer(11),
             'updated_at' => $this->integer(11),

@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Book */
+/* @var $model common\models\Publisher */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Books', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Publishers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="book-view">
+<div class="publisher-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,17 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'isbn',
-            'title',
-            'description:ntext',
-            'pages',
-            'show',
-            'available',
-            'author',
-            'illustrator',
-            'publisher',
+            'name',
+            'nationality',
             'added_by',
-            'publishion_date',
             'updated_at',
             'created_at',
         ],

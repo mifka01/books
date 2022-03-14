@@ -4,20 +4,19 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use common\models\Author;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Authors';
+$this->title = 'Publishers';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="author-index">
+<div class="publisher-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Author', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Publisher', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -25,23 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                    'attribute' => 'name',
-                    'format' => 'raw',
-                    'value' => function($model){
-                        return Html::a($model->name,Url::to(['update','id'=> $model->id]));
-                    }
-            ],
-            'surname',
+
+            'id',
+            'name',
             'nationality',
-            'birthdate:date',
-            //'added_by',
-            //'updated_at',
+            'added_by',
+            'updated_at',
             //'created_at',
             [
                 'class' => ActionColumn::className(),
-                'visibleButtons' => ['view' => false],
-                'urlCreator' => function ($action, Author $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Publisher $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

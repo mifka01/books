@@ -31,4 +31,14 @@ class BookQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * {@inheritdoc}
+     * @return \common\models\Book[]|array
+     */
+    public function showed()
+    {
+        return $this->andWhere(['show' => 1]);
+    }
+
 }

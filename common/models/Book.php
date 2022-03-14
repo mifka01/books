@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%book}}".
@@ -38,19 +40,31 @@ class Book extends \yii\db\ActiveRecord
     {
         return '{{%book}}';
     }
+    public function behaviors(){
+        return [
+            TimestampBehavior::class,
+            [
+                'class' => BlameableBehavior::class,
+                'createdByAttribute' => 'added_by',
+                'updatedByAttribute' => false
+            ]
+        ];
 
+
+    }
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['isbn', 'title', 'publishion_date'], 'required'],
+            [['isbn', 'title','pages','show','available'], 'required'],
             [['description'], 'string'],
             [['pages', 'show', 'available', 'author', 'illustrator', 'publisher', 'added_by'], 'integer'],
-            [['publishion_date', 'updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at'], 'safe'],
             [['isbn'], 'string', 'max' => 17],
             [['title'], 'string', 'max' => 255],
+            [['publishion_date'], 'integer', 'min' => 1000,'max'=>9999],
             [['added_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['added_by' => 'id']],
             [['author'], 'exist', 'skipOnError' => true, 'targetClass' => Author::className(), 'targetAttribute' => ['author' => 'id']],
             [['illustrator'], 'exist', 'skipOnError' => true, 'targetClass' => Illustrator::className(), 'targetAttribute' => ['illustrator' => 'id']],

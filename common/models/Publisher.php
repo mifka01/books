@@ -3,12 +3,15 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%publisher}}".
  *
  * @property int $id
  * @property string|null $name
+ * @property string|null $surname
  * @property string|null $nationality
  * @property int|null $added_by
  * @property string|null $updated_at
@@ -26,6 +29,18 @@ class Publisher extends \yii\db\ActiveRecord
     {
         return '{{%publisher}}';
     }
+    public function behaviors(){
+        return [
+            TimestampBehavior::class,
+            [
+                'class' => BlameableBehavior::class,
+                'createdByAttribute' => 'added_by',
+                'updatedByAttribute' => false
+            ]
+        ];
+
+
+    }
 
     /**
      * {@inheritdoc}
@@ -33,10 +48,11 @@ class Publisher extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'surname', 'nationality'], 'required'],
             [['added_by'], 'integer'],
             [['updated_at', 'created_at'], 'safe'],
-            [['name'], 'string', 'max' => 255],
-            [['nationality'], 'string', 'max' => 50],
+            [['name', 'surname'], 'string', 'max' => 255],
+            [['nationality'], 'string', 'max' => 2],
             [['added_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['added_by' => 'id']],
         ];
     }

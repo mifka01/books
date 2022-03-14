@@ -18,7 +18,8 @@ class m220312_161159_create_illustrator_table extends Migration
         $this->createTable('{{%illustrator}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(255),
-            'nationality' => $this->string(50),
+            'surname' => $this->string(255),
+            'nationality' => $this->string(2),
             'added_by' => $this->integer(11),
             'updated_at' => $this->integer(11),
             'created_at' => $this->integer(11),

@@ -1,34 +1,14 @@
 <?php
 
 namespace common\models\query;
+use common\models\query\ListQuery;
 
 /**
  * This is the ActiveQuery class for [[\common\models\Illustrator]].
  *
  * @see \common\models\Illustrator
  */
-class IllustratorQuery extends \yii\db\ActiveQuery
+class IllustratorQuery extends ListQuery
 {
-    /*public function active()
-    {
-        return $this->andWhere('[[status]]=1');
-    }*/
 
-    /**
-     * {@inheritdoc}
-     * @return \common\models\Illustrator[]|array
-     */
-    public function all($db = null)
-    {
-        return parent::all($db);
-    }
-
-    /**
-     * {@inheritdoc}
-     * @return \common\models\Illustrator|array|null
-     */
-    public function one($db = null)
-    {
-        return parent::one($db);
-    }
 }

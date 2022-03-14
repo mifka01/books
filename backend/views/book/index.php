@@ -25,21 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'isbn',
             'title',
-            'description:ntext',
             'pages',
-            //'show',
-            //'available',
-            //'author',
+            'show',
+            'available',
+            'author',
             //'illustrator',
-            //'publisher',
+            'publisher',
             //'added_by',
             //'publishion_date',
             //'updated_at',
-            //'created_at',
+            'created_at:datetime',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Book $model, $key, $index, $column) {
