@@ -15,9 +15,11 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/sorter.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
+        '\rmrevin\yii\fontawesome\AssetBundle',
     ];
 }

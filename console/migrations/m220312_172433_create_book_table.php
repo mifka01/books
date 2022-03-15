@@ -14,7 +14,7 @@ class m220312_172433_create_book_table extends Migration
     {
         $this->createTable('{{%book}}', [
           'id' => $this->primaryKey(),
-          'isbn' => $this->string(17)->notNull(),
+          'isbn' => $this->string(17)->notNull()->unique(),
           'title' => $this->string(255)->notNull(),
           'description' =>$this->text(),
           'pages' => $this->integer()->notNull(),
@@ -28,7 +28,6 @@ class m220312_172433_create_book_table extends Migration
           'updated_at' => $this->integer(11),
           'created_at' => $this->integer(11),
         ]);
-
 
         $this->createIndex(
           '{{%idx-book-author}}',

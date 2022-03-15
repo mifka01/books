@@ -13,6 +13,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $name
  * @property string|null $surname
  * @property string|null $nationality
+ * @property string|null $birthdate
  * @property int|null $added_by
  * @property string|null $updated_at
  * @property string|null $created_at
@@ -49,7 +50,7 @@ class Illustrator extends \yii\db\ActiveRecord
         return [
             [['name', 'surname', 'nationality'], 'required'],
             [['added_by'], 'integer'],
-            [['updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at', 'birthdate'], 'safe'],
             [['name', 'surname'], 'string', 'max' => 255],
             [['nationality'], 'string', 'max' => 2],
             [['added_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['added_by' => 'id']],

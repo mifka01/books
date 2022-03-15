@@ -3,11 +3,11 @@
 namespace common\models\query;
 
 /**
- * This is the ActiveQuery class for [[\common\models\Genre]].
+ * This is the ActiveQuery class for [[\common\models\Borrowing]].
  *
- * @see \common\models\Genre
+ * @see \common\models\Borrowing
  */
-class GenreQuery extends \yii\db\ActiveQuery
+class BorrowingQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class GenreQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\Genre[]|array
+     * @return \common\models\Borrowing[]|array
      */
     public function all($db = null)
     {
@@ -25,10 +25,13 @@ class GenreQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \common\models\Genre|array|null
+     * @return \common\models\Borrowing|array|null
      */
     public function one($db = null)
     {
         return parent::one($db);
+    }
+    public function active(){
+        return $this->andWhere('return_date <= NOW()');
     }
 }

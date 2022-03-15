@@ -31,6 +31,10 @@ $this->title = 'Books Administration';
         </div>
         <div class="row mb-5">
             <div class="col-lg-3">
+                <h2>Borrowing</h2>
+                <p><a class="text-dark" href="<?= Url::to(['borrowing/index'])?>">Continue &raquo;</a></p>
+            </div>
+            <div class="col-lg-3">
                 <h2>User</h2>
                 <p><a class="text-dark" href="<?= Url::to(['user/index'])?>">Continue &raquo;</a></p>
             </div>

@@ -59,6 +59,7 @@ class Book extends \yii\db\ActiveRecord
     {
         return [
             [['isbn', 'title','pages','show','available'], 'required'],
+            ['isbn', 'unique'],
             [['description'], 'string'],
             [['pages', 'show', 'available', 'author', 'illustrator', 'publisher', 'added_by'], 'integer'],
             [['updated_at', 'created_at'], 'safe'],
@@ -106,11 +107,11 @@ class Book extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Author0]].
+     * Gets query for [[Author]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\AuthorQuery
      */
-    public function getAuthor0()
+    public function getAuthor()
     {
         return $this->hasOne(Author::className(), ['id' => 'author']);
     }
@@ -125,32 +126,23 @@ class Book extends \yii\db\ActiveRecord
         return $this->hasMany(Borrowing::className(), ['book' => 'id']);
     }
 
-    /**
-     * Gets query for [[HasGenres]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\HasGenreQuery
-     */
-    public function getHasGenres()
-    {
-        return $this->hasMany(HasGenre::className(), ['book' => 'id']);
-    }
 
     /**
-     * Gets query for [[Illustrator0]].
+     * Gets query for [[Illustrator]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\IllustratorQuery
      */
-    public function getIllustrator0()
+    public function getIllustrator()
     {
         return $this->hasOne(Illustrator::className(), ['id' => 'illustrator']);
     }
 
     /**
-     * Gets query for [[Publisher0]].
+     * Gets query for [[Publisher]].
      *
      * @return \yii\db\ActiveQuery|\common\models\query\PublisherQuery
      */
-    public function getPublisher0()
+    public function getPublisher()
     {
         return $this->hasOne(Publisher::className(), ['id' => 'publisher']);
     }

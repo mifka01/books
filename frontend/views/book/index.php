@@ -1,7 +1,11 @@
 <?php
+
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 ?>
-
-<?php echo \yii\widgets\ListView::widget([
-        'dataProvider' => $dataProvider
-])?>
+    <ul class="list-group">
+        <?php echo \yii\widgets\ListView::widget([
+        'dataProvider' => $dataProvider,
+        'itemView' => '_item',
+        'summary'=>false
+        ])?>
+    </ul>

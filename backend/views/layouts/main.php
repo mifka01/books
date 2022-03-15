@@ -31,7 +31,7 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-light fixed-top',
+            'class' => 'navbar navbar-expand-md navbar-light fixed-top shadow-sm',
         ],
     ]);
     $menuItems = [
@@ -60,9 +60,15 @@ AppAsset::register($this);
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <?= Alert::widget() ?>
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            'options' =>['class'=>'bg-white border-bottom text-muted']
+        ]);?>
         <?= $content ?>
+
     </div>
 </main>
+
 <?php $this->endBody() ?>
 </body>
 </html>

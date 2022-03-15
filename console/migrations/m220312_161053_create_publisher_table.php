@@ -18,7 +18,6 @@ class m220312_161053_create_publisher_table extends Migration
         $this->createTable('{{%publisher}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(255),
-            'surname' => $this->string(255),
             'nationality' => $this->string(2),
             'added_by' => $this->integer(11),
             'updated_at' => $this->integer(11),

@@ -20,6 +20,7 @@ class m220312_161159_create_illustrator_table extends Migration
             'name' => $this->string(255),
             'surname' => $this->string(255),
             'nationality' => $this->string(2),
+            'birthdate' => $this->date(),
             'added_by' => $this->integer(11),
             'updated_at' => $this->integer(11),
             'created_at' => $this->integer(11),

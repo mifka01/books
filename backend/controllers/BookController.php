@@ -2,12 +2,9 @@
 
 namespace backend\controllers;
 
-use common\models\Author;
+
 use common\models\Book;
-use common\models\Illustrator;
-use common\models\Publisher;
 use yii\data\ActiveDataProvider;
-use yii\db\ActiveQuery;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -53,7 +50,7 @@ class BookController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Book::find(),
+            'query' => Book::find()
             /*
             'pagination' => [
                 'pageSize' => 50
@@ -83,7 +80,7 @@ class BookController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -106,7 +103,7 @@ class BookController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [

@@ -88,3 +88,24 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.item-link{
+    color: gray;
+    transition: color .2s ease-out 100ms
+}
+.item-link:hover{
+    color: black;
+}
+.book-search:focus{
+    outline: none;
+    box-shadow: none;
+}
+a{
+    color: gray;
+}
+a:hover{
+    color:black;
+}
+.sorter{
+    cursor: pointer;
+}

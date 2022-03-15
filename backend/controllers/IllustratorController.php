@@ -100,6 +100,9 @@ class IllustratorController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $model->getBooks(),
+        ]);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['update', 'id' => $model->id]);
@@ -107,6 +110,7 @@ class IllustratorController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'dataProvider'=>$dataProvider
         ]);
     }
 

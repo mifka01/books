@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-dark']) ?>
     </p>
 
 
@@ -28,21 +28,39 @@ $this->params['breadcrumbs'][] = $this->title;
             'isbn',
             'title',
             'pages',
-            'show',
-            'available',
-            'author',
-            //'illustrator',
-            'publisher',
-            //'added_by',
-            //'publishion_date',
-            //'updated_at',
+            ['attribute' => 'show',
+            'value' => function($model){
+            return ($model->show) ? 'Yes' : 'No';
+            }],
+            ['attribute' => 'available',
+                'value' => function($model){
+                    return ($model->available) ? 'Yes' : 'No';
+                }],
+            ['attribute' => 'author',
+             'value' => function($model) {
+                return $model->getAuthor()->fullName();
+             }
+            ],
+            ['attribute' => 'publisher',
+                'value' => function($model) {
+                    return $model->getPublisher()->one()->name;
+                }
+            ],
+            [   'attribute' =>'borrowed',
+                'label'=>'Borrowed',
+                'value' => function($model){
+                    return $model->getBorrowings()->count();
+                }
+            ],
             'created_at:datetime',
             [
                 'class' => ActionColumn::className(),
+                'visibleButtons' => ['view' => false],
                 'urlCreator' => function ($action, Book $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
+
         ],
     ]); ?>
 

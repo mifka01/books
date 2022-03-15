@@ -31,11 +31,11 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-light fixed-top',
+            'class' => 'navbar navbar-expand-md navbar-light fixed-top shadow-sm',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Home', 'url' => ['/book/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -61,7 +61,13 @@ AppAsset::register($this);
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <?= Alert::widget() ?>
+        <div class="d-flex justify-content-center">
+            <div class="col-md-8 mt-5">
+                <?= $this->render('@frontend/views/book/_sorter') ?>
+                <?= $this->render('@frontend/views/book/_search') ?>
         <?= $content ?>
+            </div>
+        </div>
     </div>
 </main>
 <?php $this->endBody() ?>

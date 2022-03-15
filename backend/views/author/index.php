@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Author', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Author', ['create'], ['class' => 'btn btn-dark']) ?>
     </p>
 
 
@@ -28,16 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                     'attribute' => 'name',
                     'format' => 'raw',
+                    'filter' =>'name',
                     'value' => function($model){
-                        return Html::a($model->name,Url::to(['update','id'=> $model->id]));
+                        return Html::a($model->name.' '.$model->surname ,Url::to(['update','id'=> $model->id]));
                     }
             ],
-            'surname',
             'nationality',
             'birthdate:date',
-            //'added_by',
-            //'updated_at',
-            //'created_at',
             [
                 'class' => ActionColumn::className(),
                 'visibleButtons' => ['view' => false],

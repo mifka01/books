@@ -7,10 +7,10 @@ use yii\widgets\ListView;
 /* @var $dataProvider \yii\data\ActiveDataProvider*/
 
 
-$this->title = 'Update Author: ' . $model->name;
+$this->title = 'Update Author: ' . $model->name . $model->surname;
 $this->params['breadcrumbs'][] = ['label' => 'Authors', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['update', 'id' => $model->id]];
+
 ?>
 <div class="author-update">
 
@@ -22,6 +22,8 @@ $this->params['breadcrumbs'][] = 'Update';
     <div class='books'>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
+            'itemView' => '_book',
+            'summary'=>false
         ]);
         ?>
     </div>
