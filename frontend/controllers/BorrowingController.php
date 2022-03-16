@@ -37,13 +37,6 @@ class BorrowingController extends Controller
 
     }
 
-    public function actionSuccess(){
-        $model = Borrowing::find()->andWhere(['id' => 23])->one();
-        return $this->render('success', [
-            'model' => $model,
-        ]);
-    }
-
     /**
      * Creates a new Borrowing model.
      * If creation is successful, the browser will be redirected to the 'view' page.

@@ -32,6 +32,6 @@ class BorrowingQuery extends \yii\db\ActiveQuery
         return parent::one($db);
     }
     public function active(){
-        return $this->andWhere('return_date <= NOW()');
+        return $this->andWhere('return_date <= NOW()-1');
     }
 }
